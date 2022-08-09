@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #563b79;
+    flex-direction: column;
+    font-family: 'Baloo 2', cursive;
+}
+
+.navbar{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    background-color: rgb(39, 39, 39);
+    box-shadow: 2px 2px 12px #483364;
+}
+
+.highlights button{
+    padding: 6px 3rem;
+    background-color: rgb(120, 86, 255);
+    color: white;
+    font-family: 'Baloo 2', cursive;
+    border: none;
+}
+
+.new-game-btn{
+    padding: 6px 3rem;
+    background-color: rgb(120, 86, 255);
+    color: white;
+    font-family: 'Baloo 2', cursive;
+    border: none;
+}
+
+.new-game-btn:hover{
+    background-color: rgb(112, 51, 255);
+}
+
+#grid-container{
+    margin-top: 3.2rem;
+    background-color: #CCC;
+    display: grid;
+    grid-template-columns: repeat(var(--grid-size), var(--cell-size));
+    grid-template-rows: repeat(var(--grid-size), var(--cell-size));
+    grid-gap: var(--cell-gap);
+    padding: 1vmin;
+    position: relative;
+}
+
+.cell{
+    border-radius: .5vmin;
+    background-color: #AAA;
+}
+
+.tile{
+    position: absolute;
+    display: flex;
+    font-size: 3.8vmin;
+    justify-content: center;
+    align-items: center;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background-color: hsl(230, 50%, var(--background-opacity));
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    border-radius: .5vmin;
+    top: calc(var(--y) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+    left: calc(var(--x) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+    animation: visible 200ms;
+    transition: 120ms;
+}
+
+@keyframes visible{
+    0%{
+        opacity: .4%;
+        transform: scale(0);
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    #grid-container{
+        --cell-size: 11.2vmin;
+    }
+    .navbar {
+        justify-content: center;
+    }
+    .new-game-btn{
+        display: none;
+    }
+    .highlights button{
+        padding: 6px 2rem;
+    }
+}
